@@ -4,7 +4,6 @@
   position: relative;
   overflow: hidden;
   background-image: url("../imgs/McVey-Building-Miami-University.png");
-
   background-attachment: fixed; /* For desktop, may not work on mobile */
   background-position: center;
   background-repeat: no-repeat;
@@ -27,6 +26,12 @@
 .parallax > * {
   position: relative;
   z-index: 1;
+}
+
+.textarea {
+  background-color: rgba(150, 150, 150, 0.8); /* Light grey with 50% transparency */
+  border: 1px solid white; /* White border */
+  padding: 15px; /* Optional: add padding for better spacing */
 }
 
 
