@@ -22,6 +22,14 @@
   transform: translate(-5%, -5%); /* Recenters the background after scaling */
 }
 
+#timer {
+    font-family: 'DSEG7Classic-Regular', monospace; /* Fallback to monospace if font fails */
+    font-size: 4em; /* Adjust size to your preference */
+    color: #ff0000; /* Typical red LED color */
+    text-align: center;
+    letter-spacing: 0.05em;
+}
+
 /* Make sure content inside the parallax div is unaffected */
 .parallax > * {
   position: relative;
