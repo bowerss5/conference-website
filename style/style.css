@@ -23,8 +23,8 @@
 }
 
 #timer {
-    font-family: 'DSEG7Classic-Regular', monospace; /* Fallback to monospace if font fails */
-    font-size: 4em; /* Adjust size to your preference */
+    font-family: 'Sans-Serif', monospace; /* Fallback to monospace if font fails */
+    font-size: 5em; /* Adjust size to your preference */
     color: #ff0000; /* Typical red LED color */
     text-align: center;
     letter-spacing: 0.05em;

@@ -16,7 +16,7 @@ function initCountdown() {
       const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-      var pill = `<span class="badge badge-secondary"><h3>${days}d ${hours}h ${minutes}m ${seconds}s</h3></span>`;
+      var pill = `<h3>${days}d ${hours}h ${minutes}m ${seconds}s</h3>`;
       if (days < 0) {
       // Update the countdown display
         pill = `<span class="badge text-bg-secondary"><h3>The conference has ended!<h3></span>`;
