@@ -28,8 +28,7 @@ function parseCsv() {
 
 function makeCard(bio, linkedin, first, last,  major) {
     let img = "../imgs/Cohort12/" + last + ".jpg"
-    // let img = ""
-    let name = first + last
+    let name = first + " " + last
     return `
         <div class="col-lg-4 col-md-6 mb-4">
           <div class="card">
