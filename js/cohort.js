@@ -9,7 +9,7 @@ const itemsPerPage = 12;
 
 function parseCsv() {
   $.ajax({
-    url: "../data/temp.csv",
+    url: "../data/cohort.csv",
     method: "GET",
     type: "text",
   })
