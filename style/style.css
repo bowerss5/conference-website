@@ -37,9 +37,13 @@
 }
 
 .textarea {
-  background-color: rgba(150, 150, 150, 0.8); /* Light grey with 50% transparency */
+  background-color: rgba(255, 255, 255, 0.15); /* Light white with transparency */
   border: 1px solid white; /* White border */
   padding: 15px; /* Optional: add padding for better spacing */
+  backdrop-filter: blur(10000px); /* Blurs the content behind */
+  -webkit-backdrop-filter: blur(10px); /* For Safari support */
+  border-radius: 8px; /* Optional: rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds subtle shadow for depth */
 }
 
 /* Add these styles to your CSS file */
