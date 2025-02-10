@@ -45,7 +45,7 @@
 
 .textarea {
   background-color: white; /* Light white with transparency */
-  border: 1px solid white; /* White border */
+  /* border: 1px solid white; /* White border */ */
   padding: 15px; /* Optional: add padding for better spacing */
   backdrop-filter: blur(10000px); /* Blurs the content behind */
   -webkit-backdrop-filter: blur(10px); /* For Safari support */
