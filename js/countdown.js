@@ -59,7 +59,7 @@ function updateTimer() {
   const difference = targetDate - now;
 
   if (difference <= 0) {
-    document.querySelector('.timer').innerHTML = 'Timer Expired!';
+    document.querySelector('.timer').innerHTML = '';
     return;
   }
 
