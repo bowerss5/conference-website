@@ -70,6 +70,7 @@
   margin: 0 auto;
 }
 
+
 .timer {
   font-size: 2.5rem;
   font-weight: bold;
@@ -82,11 +83,19 @@
   /*color: black;*/
 }
 
+.date {
+  filter: drop-shadow(2px 2px 0 #000);
+}
 .unit {
   display: inline-block;
   margin: 0 10px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  /* or */
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  padding: 10px;
+  background-color:white;
 }
-
 .label {
   font-size: 0.8rem;
   /* color: #666; */
