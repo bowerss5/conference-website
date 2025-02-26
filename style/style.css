@@ -51,6 +51,8 @@
   -webkit-backdrop-filter: blur(10px); /* For Safari support */
   border-radius: 8px; /* Optional: rounded corners */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds subtle shadow for depth */
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 
