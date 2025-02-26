@@ -1,0 +1,19 @@
+.agenda-item {
+    display: flex;
+    margin-bottom: 20px;
+}
+.time {
+    width: 80px;
+    font-weight: bold;
+    padding-right: 15px;
+}
+.content {
+    flex: 1;
+}
+.title {
+    font-weight: bold;
+}
+.speaker {
+    font-style: italic;
+    margin-top: 5px;
+}
