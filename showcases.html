@@ -14,6 +14,17 @@
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
 
   <title>Showcases</title>
+  <style>
+    .video-container {
+      margin: 20px;
+    }
+
+    iframe {
+      width: 100%;
+      max-width: 560px;
+      height: 315px;
+    }
+  </style>
 </head>
 
 <body>
@@ -59,6 +70,10 @@
           <br />
           <hr />
           <br />
+          <!-- There is a problem when a new video is broken into a new row its always centered
+           and I don't know how to change it but it's something to do with this, I was trying to 
+           make new videos get added on the left of new rows, like text-->
+          <div id="videos" class="row justify-content-center"></div>
         </div>
       </div>
     </div>
@@ -88,6 +103,40 @@
     crossorigin="anonymous"></script>
 
   <script src="./js/cohort.js"></script>
+
+   <!-- Video Loading Script -->
+   <script>
+    // get csv
+    async function loadVideos() {
+      const response = await fetch('/data/videotest.csv'); 
+      const data = await response.text();
+      // remove header row
+      const rows = data.split('\n').slice(1);
+
+      const videoContainer = document.getElementById('videos');
+
+      rows.forEach(row => {
+        const [title, videoUrl] = row.split(',');
+
+        if (videoUrl) {
+          const videoFrame = document.createElement('iframe');
+          videoFrame.src = videoUrl.trim();
+          videoFrame.title = title.trim();
+          videoFrame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+          videoFrame.allowFullscreen = true;
+          
+          const container = document.createElement('div');
+          // 3 per row
+          container.className = 'video-container col-md-3';
+          container.appendChild(videoFrame);
+
+          videoContainer.appendChild(container);
+        }
+      });
+    }
+    // Load videos when the page loads
+    window.onload = loadVideos;
+  </script>
 </body>
 
 </html>
