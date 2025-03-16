@@ -1,27 +1,26 @@
 async function loadVideos() {
   // Load PerfectScrollbar dynamically if not already loaded
-  if (typeof PerfectScrollbar === 'undefined') {
+  if (typeof PerfectScrollbar === "undefined") {
     await loadPerfectScrollbar();
   }
 
-  const response = await fetch("/data/videotest.csv");
+  //const response = await fetch("/data/videotest.csv");
+  const response = await fetch("/data/videos_1.csv");
   const data = await response.text();
   // remove header row
   const rows = data.split("\n").slice(1);
   const videoContainer = document.getElementById("videos");
 
   // Clear existing content
-  videoContainer.innerHTML = '';
+  videoContainer.innerHTML = "";
 
   rows.forEach((row) => {
     // Make sure to properly handle commas within quoted fields
     const columns = parseCSVRow(row);
-    const title = columns[0] || '';
-    const videoUrl = columns[1] || '';
-    const description = columns[2] ||
-      "No Description Available"
-      ;
-
+    const title = columns[1] || "";
+    const members = columns[2] || "";
+    const videoUrl = columns[3] || "";
+    const description = columns[4] || "No Description Available";
     if (videoUrl) {
       // Create card container
       const card = document.createElement("div");
@@ -30,7 +29,15 @@ async function loadVideos() {
       // Create card header for title
       const cardHeader = document.createElement("div");
       cardHeader.className = "card-header";
-      cardHeader.textContent = title.trim();
+      const titleElement = document.createElement("h5");
+      titleElement.textContent = title.trim();
+
+      const membersElement = document.createElement("h6");
+      membersElement.textContent = members.trim();
+      membersElement.className = "text-muted";
+
+      cardHeader.appendChild(titleElement);
+      cardHeader.appendChild(membersElement);
 
       // Create card body
       const cardBody = document.createElement("div");
@@ -46,7 +53,8 @@ async function loadVideos() {
       videoFrame.title = title.trim();
       videoFrame.className = "w-100";
       videoFrame.style.height = "225px";
-      videoFrame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+      videoFrame.allow =
+        "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
       videoFrame.allowFullscreen = true;
 
       // Create description column (right side)
@@ -83,8 +91,8 @@ async function loadVideos() {
 
   // Initialize Perfect Scrollbar after DOM is fully updated
   setTimeout(() => {
-    const scrollElements = document.querySelectorAll('.scrollable-content');
-    scrollElements.forEach(el => {
+    const scrollElements = document.querySelectorAll(".scrollable-content");
+    scrollElements.forEach((el) => {
       try {
         new PerfectScrollbar(el);
       } catch (error) {
@@ -103,14 +111,14 @@ function parseCSVRow(row) {
   for (let i = 0; i < row.length; i++) {
     if (row[i] === '"') {
       inQuotes = !inQuotes;
-    } else if (row[i] === ',' && !inQuotes) {
-      result.push(row.substring(startPos, i).replace(/^"|"$/g, '').trim());
+    } else if (row[i] === "," && !inQuotes) {
+      result.push(row.substring(startPos, i).replace(/^"|"$/g, "").trim());
       startPos = i + 1;
     }
   }
 
   // Add the last field
-  result.push(row.substring(startPos).replace(/^"|"$/g, '').trim());
+  result.push(row.substring(startPos).replace(/^"|"$/g, "").trim());
   return result;
 }
 
@@ -118,14 +126,16 @@ function parseCSVRow(row) {
 async function loadPerfectScrollbar() {
   return new Promise((resolve, reject) => {
     // Load CSS
-    const cssLink = document.createElement('link');
-    cssLink.rel = 'stylesheet';
-    cssLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/perfect-scrollbar/1.5.5/css/perfect-scrollbar.min.css';
+    const cssLink = document.createElement("link");
+    cssLink.rel = "stylesheet";
+    cssLink.href =
+      "https://cdnjs.cloudflare.com/ajax/libs/perfect-scrollbar/1.5.5/css/perfect-scrollbar.min.css";
     document.head.appendChild(cssLink);
 
     // Load JS
-    const script = document.createElement('script');
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/perfect-scrollbar/1.5.5/perfect-scrollbar.min.js';
+    const script = document.createElement("script");
+    script.src =
+      "https://cdnjs.cloudflare.com/ajax/libs/perfect-scrollbar/1.5.5/perfect-scrollbar.min.js";
     script.onload = resolve;
     script.onerror = reject;
     document.head.appendChild(script);
@@ -134,7 +144,7 @@ async function loadPerfectScrollbar() {
 
 // Add CSS for scrollbar styling
 function addScrollbarStyles() {
-  const style = document.createElement('style');
+  const style = document.createElement("style");
   style.textContent = `
     .scrollable-content {
       padding-right: 10px;
@@ -157,9 +167,9 @@ window.onload = function() {
 };
 
 // Update scrollbars when window resizes
-window.addEventListener('resize', function() {
-  const scrollElements = document.querySelectorAll('.scrollable-content');
-  scrollElements.forEach(el => {
+window.addEventListener("resize", function() {
+  const scrollElements = document.querySelectorAll(".scrollable-content");
+  scrollElements.forEach((el) => {
     const ps = el._ps || new PerfectScrollbar(el);
     el._ps = ps;
     ps.update();
