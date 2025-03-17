@@ -46,12 +46,14 @@ async function loadVideos() {
       // Create video column (left side)
       const videoCol = document.createElement("div");
       videoCol.className = "col-md-6";
+      //const videoWrapper = document.createElement("div")
+      //videoWrapper.className = "video-wrapper"
 
       // Create and configure video iframe
       const videoFrame = document.createElement("iframe");
       videoFrame.src = videoUrl.trim();
       videoFrame.title = title.trim();
-      videoFrame.className = "w-100";
+      //videoFrame.className = "w-100";
       videoFrame.style.height = "225px";
       videoFrame.allow =
         "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
