@@ -5,7 +5,7 @@ async function loadVideos() {
   }
 
   //const response = await fetch("/data/videotest.csv");
-  const response = await fetch("/data/videos_3.csv");
+  const response = await fetch("/data/videos_4.csv");
   const data = await response.text();
   // remove header row
   const rows = data.split("\n").slice(1);
