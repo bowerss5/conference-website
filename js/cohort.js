@@ -13,42 +13,42 @@ function parseCsv() {
     method: "GET",
     type: "text",
   })
-    .then(function (data) {
+    .then(function(data) {
       const { data: lines } = Papa.parse(data);
       datalines = lines.slice(1);
       lines.slice(1).map((line, _0) => {
         const [_1, _2, first, last, major, bio, linkedin] = line;
-        $(".bios").append(makeCard(bio, linkedin, first, last,  major));
+        $(".bios").append(makeCard(bio, linkedin, first, last, major));
       });
 
-       // Initialize Perfect Scrollbar after the cards are added
-       const scrollElements = document.querySelectorAll('.bio-scroll');
-       scrollElements.forEach(el => {
-         new PerfectScrollbar(el);
-       });
+      // Initialize Perfect Scrollbar after the cards are added
+      const scrollElements = document.querySelectorAll('.perf-scroll');
+      scrollElements.forEach(el => {
+        new PerfectScrollbar(el);
+      });
     })
-    .catch(function (data) {
+    .catch(function(data) {
       console.log("failed", data);
     });
 }
 
 // perfect scroll bar
-document.addEventListener("DOMContentLoaded", function () {
-  // Initialize Perfect Scrollbar for all elements with the class .bio-scroll
-  const scrollElements = document.querySelectorAll('.bio-scroll');
+document.addEventListener("DOMContentLoaded", function() {
+  // Initialize Perfect Scrollbar for all elements with the class .perf-scroll
+  const scrollElements = document.querySelectorAll('.perf-scroll');
   scrollElements.forEach(el => {
     new PerfectScrollbar(el);
   });
 });
 
 
-function makeCard(bio, linkedin, first, last,  major) {
-    let img = "../imgs/Cohort12/" + last.replace(/ .*/,'') + ".jpg"
-    let name = first + " " + last
-    // this would make the bios dissapear 
-    // const ps = new PerfectScrollBar('.bio-scroll')
-    // ps.update();
-    return `
+function makeCard(bio, linkedin, first, last, major) {
+  let img = "../imgs/Cohort12/" + last.replace(/ .*/, '') + ".jpg"
+  let name = first + " " + last
+  // this would make the bios dissapear 
+  // const ps = new PerfectScrollBar('.perf-scroll')
+  // ps.update();
+  return `
         <div class="col-lg-4 col-md-6 mb-4">
           <div class="card">
             <img src="${img}" class="card-img-top bio-img" alt="bio">
@@ -58,7 +58,7 @@ function makeCard(bio, linkedin, first, last,  major) {
               </svg></a></h5>
               
               <p class="card-text">${major}</p>
-                <div class="bio-scroll" data-mdb-perfect-scrollbar-init style="position: relative" data-mdb-perfect-scrollbar-initialized="true">
+                <div class="perf-scroll" data-mdb-perfect-scrollbar-init style="position: relative" data-mdb-perfect-scrollbar-initialized="true">
                 <p class="card-text">${bio}</p>
               </div>
             </div>
