@@ -1,40 +1,37 @@
-// JS/navbar.js
 document.addEventListener("DOMContentLoaded", function() {
     const navbarHTML = `
-    <nav class="navbar navbar-expand-lg" id="navHeader">
-        <div class="row navbar-collapse collapse show">
-            <div class="col-lg-2">
-                <a href="index.html">
-                    <img class="navLogo" alt="logo" src="imgs/logos/Circular/main.png">
-                </a>
-            </div>
-            <div class="col-lg-9 tabsSec">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <ul class="nav nav-tabs">
-                    <div class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" id="homeTab" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="cohortTab" href="cohort.html">Meet Cohort XII</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="conferenceTab" href="conference.html">Conference</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="showcasesTab" href="showcases.html">Showcases</a>
-                        </li>
-                    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navHeader">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img class="navLogo" alt="logo" src="imgs/logos/Circular/main.png">
+            </a>
+            
+            <!-- Changed button styling -->
+            <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" 
+                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" id="homeTab" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="cohortTab" href="cohort.html">Meet Cohort XII</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="conferenceTab" href="conference.html">Conference</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="showcasesTab" href="showcases.html">Showcases</a>
+                    </li>
                 </ul>
             </div>
-            <div class="col-lg-1"></div>
         </div>
     </nav>
-    `;
+`;
     
-
   const currentYear = new Date().getFullYear();
   const footerHTML = `
   <div id="navFooter">
