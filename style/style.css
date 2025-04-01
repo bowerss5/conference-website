@@ -1,14 +1,13 @@
 .parallax {
-  /* Set a specific height */
   min-height: 100vh;
   position: relative;
   overflow: hidden;
   background-image: url("../imgs/af029da7-3b3d-4401-b2b5-c03a90988e1f.sized-1000x1000.jpg");
-  background-attachment: fixed; /* For desktop, may not work on mobile */
+  background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover; /* Ensures the image covers the element */
-  z-index: 0; /* Keeps it behind content */
+  background-size: cover;
+  z-index: 0;
 }
 
 .parallax::before {
@@ -18,19 +17,18 @@
   left: 0;
   width: 120%;
   height: 120%;
-  z-index: -1; /* Keeps the background behind the content */
-  transform: translate(-5%, -5%); /* Recenters the background after scaling */
+  z-index: -1;
+  transform: translate(-5%, -5%);
 }
 
 #timer {
-    font-family: 'Sans-Serif', monospace; /* Fallback to monospace if font fails */
-    font-size: 5em; /* Adjust size to your preference */
-    color: #ff0000; /* Typical red LED color */
+    font-family: 'Sans-Serif', monospace;
+    font-size: 5em;
+    color: #ff0000;
     text-align: center;
     letter-spacing: 0.05em;
 }
 
-/* Make sure content inside the parallax div is unaffected */
 .parallax > * {
   position: relative;
   z-index: 1;
@@ -44,27 +42,18 @@
 }
 
 .textarea {
-  background-color: white; /* Light white with transparency */
-  /* border: 1px solid white; /* White border */ */
-  padding: 15px; /* Optional: add padding for better spacing */
-  backdrop-filter: blur(10000px); /* Blurs the content behind */
-  -webkit-backdrop-filter: blur(10px); /* For Safari support */
-  border-radius: 8px; /* Optional: rounded corners */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds subtle shadow for depth */
+      background-color: white;
+  padding: 15px;
+  backdrop-filter: blur(10000px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 0;
   margin-top: 0;
-}
+  }
 
-
-/* Add these styles to your CSS file */
-/* timer.css */
 .timer-container {
-  color: white; /* Text color */
-    /*text-shadow: */
-    /*  -1px -1px 0 black,*/
-    /*  1px -1px 0 black,*/
-    /*  -1px 1px 0 black,*/
-    /*  1px 1px 0 black;*/
+  color: white;
   text-align: center;
   padding: 20px;
   border-radius: 8px;
@@ -72,69 +61,99 @@
   margin: 0 auto;
 }
 
-
 .timer {
   font-size: 2.5rem;
   font-weight: bold;
-  color: #D33832; 
+  color: #D33832;
   margin: 20px 0;
 }
 
 .timer span {
   font-family: 'digital-7';
-  /*color: black;*/
 }
 
 .date {
   filter: drop-shadow(2px 2px 2 #FFF);
   text-shadow: 0px 5px 0px white !important;
 }
+
 .unit {
   display: inline-block;
   margin: 0 10px;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-  /* or */
   border: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 8px;
   padding: 10px;
   background-color:white;
 }
+
 .label {
   font-size: 0.8rem;
-  /* color: #666; */
   text-transform: uppercase;
 }
-
-/* scrollbar stuff */
 
 .ps__rail-x {
   display: none !important;
 }
 
-.ps__rail-y {
-  /* top: 480px !important; 
-  height: 365px !important; 
-   */
-   
-}
-
-.ps__thumb-y {
-  
-}
-
 .bio-scroll {
   height: 250px;
   overflow-y: auto;
-  scrollbar-width: auto; 
+  scrollbar-width: auto;
 }
 
-/* .row { */
-/*     margin-top: 40px; */
-/*     margin-bottom: 60px; */
-/**/
-/*     background-color: rgba(128, 128, 128, 0.5); */
-/* } */
-
-.row h1 { 
-  color: #D33832; 
+.row h1 {
+  color: #D33832;
 }
+
+#navHeader {
+    background-color: white;
+    padding: 1rem;
+}
+
+.navbar-brand {
+    padding: 0;
+}
+
+.navLogo {
+    height: 50px;
+    width: auto;
+}
+
+.navbar-toggler {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0.25rem 0.75rem;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.5)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background-color:rgba(255, 255, 255, 0.3);
+        padding: 1rem;
+        margin-top: 0.5rem;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .nav-item {
+        padding: 0.5rem 0;
+    }
+
+    .nav-link {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+    }
+}
+
+.nav-link.active {
+    color: #D33832 !important;
+    font-weight: bold;
+}
+
