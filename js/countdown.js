@@ -1,66 +1,50 @@
-
 $(document).ready(function() {
-  initCountdown();
-  // NOTE: Month is 0 indexed (i.e. January is month 0) so April is actually month 3
-  const targetDate = new Date(2025, 3, 11); // Replace with your target date
+  const targetDate = new Date(2025, 3, 11, 11, 30, 0, 0);
+  //const targetDate = new Date(Date.now() + 10000); // Use this to test
   initializeTimer(targetDate);
 });
-function initCountdown() {
-  const targetDate = new Date("2025-04-11");
-  const currentDate = new Date();
-  var timeDifference = targetDate.getTime() - currentDate.getTime();
-  // Update the countdown every second
-  setInterval(() => {
-    // Recalculate the time difference
-    timeDifference = targetDate.getTime() - new Date().getTime();
 
-    // Update the days, hours, minutes, and seconds
-    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24)) + 2;
-    const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-    var pill = `<h3>${days}d ${hours}h ${minutes}m ${seconds}s</h3>`;
-    if (days < 0) {
-      // Update the countdown display
-      pill = `<span class="badge text-bg-secondary"><h3>The conference has ended!<h3></span>`;
-    }
-    $("#timer").empty();
-    $("#timer").append(pill);
-  }, 1000);
-}
-
-function initCountdown() {
-  const targetDate = new Date("2025-04-11");
-  const currentDate = new Date();
-  var timeDifference = targetDate.getTime() - currentDate.getTime();
-  // Update the countdown every second
-  setInterval(() => {
-    // Recalculate the time difference
-    timeDifference = targetDate.getTime() - new Date().getTime();
-
-    // Update the days, hours, minutes, and seconds
-    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24)) + 2;
-    const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-    var pill = `<span class="badge badge-secondary"><h3>${days}d ${hours}h ${minutes}m ${seconds}s</h3></span>`;
-    if (days < 0) {
-      // Update the countdown display
-      pill = `<span class="badge text-bg-secondary"><h3>The conference has ended!<h3></span>`;
-    }
-    $("#timer").empty();
-    $("#timer").append(pill);
-  }, 1000);
-}
-
-// Alternative timer
 function initializeTimer(targetDate) {
+  // Changed from embed-responsive-1by1 to embed-responsive-16by9
+  const streamContainer = $('<div>', {
+    id: 'stream-container',
+    class: 'row mt-0 collapse'
+  }).html(`
+    <div class="col-12 justify-content-center">
+      <div class="timer-container">
+        <div class="textarea">
+          <h2 class="live-text">Conference is Live!</h2>
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" 
+                    src="https://www.youtube.com/embed/3Zu56tF9VVc" 
+                    allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  `);
+
+  $('.timer-container').parent().after(streamContainer);
+
   function updateTimer() {
     const now = new Date();
     const difference = targetDate - now;
 
     if (difference <= 0) {
-      document.querySelector('.timer').innerHTML = '';
+      // Use vanilla JavaScript as fallback
+      const timerContainer = document.querySelector('.timer-container');
+      if (timerContainer) {
+        timerContainer.style.transition = 'opacity 1s';
+        timerContainer.style.opacity = '0';
+        setTimeout(() => {
+          timerContainer.style.display = 'none';
+          // Show the stream
+          $('#stream-container').collapse('show');
+        }, 1000);
+      }
+      
+      clearInterval(timerInterval);
       return;
     }
 
@@ -69,13 +53,14 @@ function initializeTimer(targetDate) {
     const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-    document.getElementById('days').textContent = days.toString().padStart(2, '0');
-    document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-    document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    // Update the timer display
+    $('#days').text(days.toString().padStart(2, '0'));
+    $('#hours').text(hours.toString().padStart(2, '0'));
+    $('#minutes').text(minutes.toString().padStart(2, '0'));
+    $('#seconds').text(seconds.toString().padStart(2, '0'));
   }
 
-  // Update timer immediately and then every second
+  // Start the timer
   updateTimer();
-  setInterval(updateTimer, 1000);
+  const timerInterval = setInterval(updateTimer, 1000);
 }
