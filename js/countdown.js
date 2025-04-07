@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  const targetDate = new Date(2025, 3, 11, 11, 30, 0, 0);
+  const targetDate = new Date(2025, 3, 11, 10, 30, 0, 0);
   //const targetDate = new Date(Date.now() + 10000); // Use this to test
   initializeTimer(targetDate);
 });
