@@ -8,12 +8,12 @@ function initializeTimer(targetDate) {
   // Changed from embed-responsive-1by1 to embed-responsive-16by9
   const streamContainer = $('<div>', {
     id: 'stream-container',
-    class: 'row mt-0 collapse'
+    class: 'row mt-0'
   }).html(`
     <div class="col-12 justify-content-center">
       <div class="timer-container">
         <div class="textarea">
-          <h2 class="live-text">Conference is Live!</h2>
+          <h2 class="live-text">Conference has concluded!</h2>
           <div class="embed-responsive embed-responsive-16by9">
             <iframe class="embed-responsive-item" 
                     src="https://www.youtube.com/embed/3Zu56tF9VVc" 
